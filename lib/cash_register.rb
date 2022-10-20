@@ -1,4 +1,5 @@
 class CashRegister
+
     #items, discount, total and last_transaction methods need to read and write
     attr_accessor :items, :discount, :total, :last_transaction
 
