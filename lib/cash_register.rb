@@ -1,5 +1,4 @@
 class CashRegister
-
     #items, discount, total and last_transaction methods need to read and write
     attr_accessor :items, :discount, :total, :last_transaction
 
@@ -9,7 +8,7 @@ class CashRegister
         @items = []
     end
 
-    def add_item
+    def add_item(title, amount, quantity = 1)
         self.last_transaction = amount * quantity
         self.total += self.last_transaction
         quantity.times do
@@ -18,7 +17,13 @@ class CashRegister
     end
 
     def apply_discount
-        
+        if self.discount != 0
+            discount_as_percent = (100.0 - self.discount.to_f) / 100
+            self.total = (self.total * discount_as_percent).to_i
+            "After the discount, the total comes to $#{self.total}."
+        else
+            "There is no discount to apply."
+        end
     end
 
     def void_last_transaction
